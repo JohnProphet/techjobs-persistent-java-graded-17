@@ -12,9 +12,8 @@ import java.util.Objects;
 @MappedSuperclass
 public abstract class AbstractEntity {
     @Id
-    @NotNull
-    @NotEmpty
     @GeneratedValue
+    @NotNull
     private int id;
 
     @NotNull
