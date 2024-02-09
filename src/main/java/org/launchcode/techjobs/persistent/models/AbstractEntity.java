@@ -1,6 +1,5 @@
 package org.launchcode.techjobs.persistent.models;
 
-
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotEmpty;

@@ -23,6 +23,7 @@ public class Employer extends AbstractEntity {
     public void setLocation(String newLocation) {
         location = newLocation;
     }
+    public Employer() {}
 }
 
 
