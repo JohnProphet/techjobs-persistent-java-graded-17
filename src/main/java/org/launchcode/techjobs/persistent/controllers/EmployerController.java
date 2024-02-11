@@ -10,13 +10,15 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Field;
+import java.util.List;
 import java.util.Optional;
 
-//@Autowired
-//private interface EmployerRepository {} employerRepository {}
 @Controller
 @RequestMapping("employers")
 public class EmployerController {
+
+    @Autowired
+    private EmployerRepository employerRepository;
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -46,6 +48,10 @@ public class EmployerController {
         } else {
             return "redirect:../";
         }
-
     }
+//
+//    @GetMapping("index/{employerId}")
+//    public String index {
+//        return "employers/index";
+//    }
 }
