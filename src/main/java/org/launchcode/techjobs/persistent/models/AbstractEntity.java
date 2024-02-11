@@ -1,19 +1,19 @@
 package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
 @MappedSuperclass
 public abstract class AbstractEntity {
+    //@Id
     @Id
     @GeneratedValue
-    @NotNull
     private int id;
 
     @NotNull
