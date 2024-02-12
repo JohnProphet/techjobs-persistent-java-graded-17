@@ -18,8 +18,9 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     @GetMapping("employers")
-    public String index() {
+    public String index(Model model) {
         Employer employer = (Employer) employerRepository.findAll();
+        model.addAttribute("employer", employer);
         return "employers/index";
     }
 
