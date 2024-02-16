@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.persistent.controllers;
 
+import jakarta.persistence.Entity;
 import jakarta.validation.Valid;
 import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
@@ -17,10 +18,9 @@ public class EmployerController {
     @Autowired
     private EmployerRepository employerRepository;
 
-    @GetMapping("employers")
+    @GetMapping("/")
     public String index(Model model) {
-        Employer employer = (Employer) employerRepository.findAll();
-        model.addAttribute("employer", employer);
+        model.addAttribute(new Employer());
         return "employers/index";
     }
 
