@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.persistent.controllers;
 
 import jakarta.validation.Valid;
+import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,11 @@ public class SkillController {
 
     @GetMapping("/")
     public String index(Model model) {
-    Skill skill = (Skill) skillRepository.findAll();
-    model.addAttribute("skill", skill);
-    return "skills/index";
+        Iterable<Skill> skills = skillRepository.findAll();
+        model.addAttribute("skills", skills);
+        return "skills/index";
     }
+
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
     model.addAttribute(new Skill());
