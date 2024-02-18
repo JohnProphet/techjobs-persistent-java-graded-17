@@ -1,7 +1,9 @@
 package org.launchcode.techjobs.persistent.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -13,6 +15,8 @@ public class Job extends AbstractEntity {
     @Size(min = 3, max = 75)
     @ManyToOne
     private Employer employer;
+    @OneToMany
+    @JoinColumn(name="employer_id")
     private String skills;
 
     public Job() {
