@@ -19,7 +19,7 @@ public class Employer extends AbstractEntity {
     @Size(min = 3, max = 75)
     private String location;
     @OneToMany(mappedBy = "jobs")
-    @JoinColumn(name="employer")
+    @JoinColumn(name="employer_id")
     private List<Job> jobs = new ArrayList<>();
 
     public String getLocation() {
