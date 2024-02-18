@@ -1,6 +1,7 @@
 package org.launchcode.techjobs.persistent.controllers;
 
 import jakarta.validation.Valid;
+import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Job;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,14 +41,18 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model, @RequestParam int employerId) {
-
+                                    Errors errors, Model model, @RequestParam int employer_id) {
         if (errors.hasErrors()) {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
+//        Optional<Employer> optionalEmployer = employerRepository.findById(employer_id);
+//        if (optionalEmployer.isPresent()) {
+//            Employer selectedEmployer = optionalEmployer.get();
+//            newJob.setEmployer(selectedEmployer);
+//        } else { }
 
-        return "redirect:";
+            return "redirect:";
     }
 
     @GetMapping("view/{jobId}")
