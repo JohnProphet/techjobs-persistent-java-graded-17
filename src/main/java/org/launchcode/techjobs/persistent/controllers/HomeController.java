@@ -3,7 +3,9 @@ package org.launchcode.techjobs.persistent.controllers;
 import jakarta.validation.Valid;
 import org.launchcode.techjobs.persistent.models.Employer;
 import org.launchcode.techjobs.persistent.models.Job;
+import org.launchcode.techjobs.persistent.models.Skill;
 import org.launchcode.techjobs.persistent.models.data.EmployerRepository;
+import org.launchcode.techjobs.persistent.models.data.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,8 @@ import java.util.Optional;
  */
 @Controller
 public class HomeController {
-
+    @Autowired
+    private SkillRepository skillRepository;
     @Autowired
     private EmployerRepository employerRepository;
 
@@ -41,18 +44,21 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model, @RequestParam int employer_id) {
+                                    Errors errors, Model model, @RequestParam int employerId) {
         if (errors.hasErrors()) {
 	    model.addAttribute("title", "Add Job");
             return "add";
         }
-//        Optional<Employer> optionalEmployer = employerRepository.findById(employer_id);
-//        if (optionalEmployer.isPresent()) {
-//            Employer selectedEmployer = optionalEmployer.get();
-//            newJob.setEmployer(selectedEmployer);
-//        } else { }
+        Optional optEmployer = employerRepository.findById(employerId);
+        if (optEmployer.isPresent()) {
+            Employer employer = (Employer) optEmployer.get();
+            model.addAttribute("employer", employer);
+            return "employers/add";
+        } else {
 
             return "redirect:";
+        }
+
     }
 
     @GetMapping("view/{jobId}")
