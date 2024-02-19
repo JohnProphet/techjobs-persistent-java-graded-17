@@ -7,6 +7,9 @@ import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Entity
 public class Job extends AbstractEntity {
@@ -16,21 +19,20 @@ public class Job extends AbstractEntity {
     @ManyToOne
     private Employer employer;
     @OneToMany
-    @JoinColumn(name="employer_id")
-    private String skills;
+    @JoinColumn(name = "employer_id")
+    private List<Skill>skills = new ArrayList<>();
 
     public Job() {
     }
 
     // Initialize the id and value fields.
-    public Job(Employer employer, String someSkills) {
+    public Job(Employer employer, Skill skills) {
         super();
         this.employer = employer;
-        this.skills = someSkills;
+        this.skills = skills;
     }
 
     // Getters and setters.
-
 
 
     public Employer getEmployer() {
@@ -41,12 +43,12 @@ public class Job extends AbstractEntity {
         this.employer = employer;
     }
 
-    public String getSkills() {
-        return skills;
-    }
 
-    public void setSkills(String skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
+    public List<Skill> getSkills() {
+        return skills;
+    }
 }

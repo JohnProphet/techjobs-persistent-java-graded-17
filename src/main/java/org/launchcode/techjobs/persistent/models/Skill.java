@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NotNull
 public class Skill extends AbstractEntity {
     @ManyToMany(mappedBy = "skills")
-    private List<Job>jobs;
+    private List<Job> jobs = new ArrayList<>();
+
     public List<Job> getJobs() {
         return jobs;
     }
@@ -31,7 +31,6 @@ public class Skill extends AbstractEntity {
     public String getDescription() {
         return description;
     }
-    @NotNull
     public void setDescription(String newDescription) {
         description = newDescription;
     }
