@@ -11,6 +11,7 @@ import java.util.List;
 @NotNull
 public class Skill extends AbstractEntity {
     @ManyToMany(mappedBy = "skills")
+    private List<Job>jobs;
     public List<Job> getJobs() {
         return jobs;
     }
@@ -19,9 +20,9 @@ public class Skill extends AbstractEntity {
         this.jobs = jobs;
     }
 
-    @OneToMany
-    @JoinColumn(name="employer_id")
-    private List<Job> jobs = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn(name="employer_id")
+//    private List<Job> jobs = new ArrayList<>();
 
     @NotNull
     @Size(min = 3, max = 250)
