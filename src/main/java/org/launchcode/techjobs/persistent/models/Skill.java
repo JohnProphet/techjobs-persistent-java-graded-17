@@ -20,11 +20,6 @@ public class Skill extends AbstractEntity {
         this.jobs = jobs;
     }
 
-//    @OneToMany
-//    @JoinColumn(name="employer_id")
-//    private List<Job> jobs = new ArrayList<>();
-
-    @NotNull
     @Size(min = 3, max = 250)
     private String description;
 
